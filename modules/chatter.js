@@ -16,7 +16,7 @@ exports.execute = (req, res) => {
         oauthObj = auth.getOAuthObject(slackUserId);
         //q = "SELECT Id, Name, Phone, BillingAddress FROM Account WHERE Name LIKE '%" + req.body.text + "%' LIMIT 5";
 
-    force.chatter(oauthObj, '/feed-elements?feedElementType=FeedItem&subjectId=0032v00003OFq7YAAT&text=New+post', 
+    force.chatter(oauthObj, '/feed-elements', 
     {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
