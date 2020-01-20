@@ -20,7 +20,8 @@ exports.execute = (req, res) => {
     {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        json: true
+        json: true,
+        body: '"messageSegments" : [{"type" : "Text", "text" : "When should we meet for release planning? "}]'
     })
         .then(data => {
             let sfResponse = JSON.parse(data);
