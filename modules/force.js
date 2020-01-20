@@ -149,7 +149,7 @@ let apexrest = (oauth, path, params) => {
  */
 let chatter = (oauth, path, params) => {
 
-    let basePath = "/services/data/" + API_VERSION + "/chatter";
+    let basePath = "/services/data/" + API_VERSION + "/chatter/feed-elements";
 
     if (path.charAt(0) !== "/") {
         path = "/" + path;
