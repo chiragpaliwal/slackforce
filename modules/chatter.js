@@ -26,7 +26,7 @@ exports.execute = (req, res) => {
         .then(data => {
             let sfResponse = JSON.parse(data);
             console.log('##', sfResponse);
-            res.send("response received from sf");
+            res.send("Chatter Message Posted!");
         })
         .catch(error => {
             if (error.code == 401) {
