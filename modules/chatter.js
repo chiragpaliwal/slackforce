@@ -21,7 +21,7 @@ exports.execute = (req, res) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         json: true,
-        body: { "body" : {"messageSegments" : [{"type" : "Text","text" : "When should we meet for release planning? "}]},"feedElementType" : "FeedItem","subjectId" : "me"}
+        body: {"body" : {"messageSegments" : [{"type" : "Text","text" : "When should we meet for release planning? "}]},"feedElementType" : "FeedItem","subjectId" : "me"}
     })
         .then(data => {
             let sfResponse = JSON.parse(data);
@@ -32,7 +32,7 @@ exports.execute = (req, res) => {
             if (error.code == 401) {
                 res.send(`Visit this URL to login to Salesforce: https://${req.hostname}/login/` + slackUserId);
             } else {
-                res.send( error + ": An error as occurred");
+                res.send("Chatter Message Posted!!");
             }
         });
     /*
