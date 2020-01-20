@@ -21,7 +21,7 @@ exports.execute = (req, res) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         json: true,
-        body: '"body" : {"messageSegments" : [{"type" : "Text","text" : "When should we meet for release planning? "}]},"feedElementType" : "FeedItem","subjectId" : "me"'
+        body: { "body" : {"messageSegments" : [{"type" : "Text","text" : "When should we meet for release planning? "}]},"feedElementType" : "FeedItem","subjectId" : "me"}
     })
         .then(data => {
             let sfResponse = JSON.parse(data);
