@@ -14,9 +14,15 @@ exports.execute = (req, res) => {
 
     let slackUserId = req.body.user_id,
         oauthObj = auth.getOAuthObject(slackUserId),
-        message = req.body.text,
+        params = req.body.text.split(":"),
+        message = params[0],
+        messageType = params[1],
+        username = params[2],
         body = {"body" : {"messageSegments" : [{"type" : "Text","text" : message }]},"feedElementType" : "FeedItem","subjectId" : "me"};
-        //q = "SELECT Id, Name, Phone, BillingAddress FROM Account WHERE Name LIKE '%" + req.body.text + "%' LIMIT 5";
+        
+        if(messageType == 'Mention'){
+            body = {"body" : {"messageSegments" : [{"type" : "Text","text" : message }, {"type" : "Mention", "username" : username}]},"feedElementType" : "FeedItem","subjectId" : "me"};
+        }
 
     force.chatter(oauthObj, '', 
     {
