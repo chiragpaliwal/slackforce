@@ -13,7 +13,8 @@ exports.execute = (req, res) => {
     }
 
     let slackUserId = req.body.user_id,
-        oauthObj = auth.getOAuthObject(slackUserId);
+        oauthObj = auth.getOAuthObject(slackUserId),
+        message = req.body.text;
         //q = "SELECT Id, Name, Phone, BillingAddress FROM Account WHERE Name LIKE '%" + req.body.text + "%' LIMIT 5";
 
     force.chatter(oauthObj, '', 
@@ -21,7 +22,7 @@ exports.execute = (req, res) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         json: true,
-        body: {"body" : {"messageSegments" : [{"type" : "Text","text" : "When should we meet for release planning? "}]},"feedElementType" : "FeedItem","subjectId" : "me"}
+        body: {"body" : {"messageSegments" : [{"type" : "Text","text" : '"' + message + '"'}]},"feedElementType" : "FeedItem","subjectId" : "me"}
     })
         .then(data => {
             let sfResponse = JSON.parse(data);
